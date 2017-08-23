@@ -1,0 +1,14 @@
+﻿@model TraningPortal.Models.IndexViewModel
+
+@using (Html.BeginForm("AddInfoUser", "Manage", FormMethod.Post))
+{
+
+    <label>Фамилия <input type="text" name="Lastname" class="form-control" /></label><br /><br />
+
+        <label>Имя <input type="text" name="Firstname" class="form-control" /></label><br /><br />
+
+        <label>Отчество <input type="text" name="Patr" class="form-control" /></label><br /><br />
+
+        <input type="submit" value="Сохранить" class="btn btn-success" />
+
+}

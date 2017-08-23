@@ -1,0 +1,18 @@
+﻿@using TraningPortal.Models
+@model IEnumerable<Course>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Курсы</h2>
+
+@foreach (var course in Model)
+{
+    using (Html.BeginForm("RegUserCourse", "Course", FormMethod.Post))
+    {
+    <h3>@course.NameCourse</h3>
+    <input type="hidden" value="@course.Id" name="IdCourse" />
+    <span>Преподаватель: @course.Trainer.LastName @course.Trainer.FirstName @course.Trainer.Partonymic</span>
+    <input type="submit" class="btn btn-success" />
+    }
+}
