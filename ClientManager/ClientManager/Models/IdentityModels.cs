@@ -25,6 +25,10 @@ namespace ClientManager.Models
         {
         }
 
+        public DbSet<Tasks> Tasks { get; set; } //задачи
+        public DbSet<StatusWork> StatusWorks { get; set; } //статус задач и проектов
+        public DbSet<InfoProject> InfoProjects { get; set; } // информация о проекте
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

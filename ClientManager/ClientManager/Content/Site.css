@@ -1,6 +1,14 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+   margin:0;
+   height:100%;
+}
+
+.sidebarleft {
+    height: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    width: 240px;
+    background: #1e88e5;
 }
 
 /* Set padding to keep content from hitting the edges */

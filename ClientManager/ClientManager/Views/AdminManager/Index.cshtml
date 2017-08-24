@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ClientManager.Models.InfoProject>
+@{
+    ViewBag.Title = "Панель Администратора";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@ViewBag.Message
+
+<div class="container">
+    <a href="@Url.Action("Index", "Project")">Проекты</a>
+
+</div>

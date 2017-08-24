@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Добавление проекта";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="col-lg-12 col-md-12">
+
+
+    @using (Html.BeginForm("Add", "Project", FormMethod.Post))
+    {
+        <label>
+            Название проекта: <input type="text" class="form-control" name="NameProject" />
+        </label>
+        <br /><br />
+        
+        <label>
+            Описание проекта: <textarea class="form-control" name="DescProject"></textarea>
+        </label>
+        <br /><br />
+
+        <label>
+            Ссылка на проект: <input type="text" class="form-control" name="LinkProject" />
+        </label>
+        <br /><br />
+        
+
+        <input type="submit" class="btn btn-success" value="Добавить проект" />
+    }
+
+</div>
+

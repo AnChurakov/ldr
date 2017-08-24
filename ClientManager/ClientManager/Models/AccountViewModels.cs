@@ -42,14 +42,14 @@ namespace ClientManager.Models
     public class ForgotViewModel
     {
         [Required]
-        [Display(Name = "Адрес электронной почты")]
+        [Display(Name = "Электронная почта")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Адрес электронной почты")]
+        [Display(Name = "Почта")]
         [EmailAddress]
         public string Email { get; set; }
 
