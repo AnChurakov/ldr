@@ -12,5 +12,6 @@ namespace ClientManager.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public virtual ICollection<StatusWork> StatusWorks { get; set; }
+        public virtual ICollection<InfoProject> InfoProjects { get; set; }
     }
 }

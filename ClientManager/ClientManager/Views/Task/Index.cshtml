@@ -1,7 +1,38 @@
-﻿
+﻿@using ClientManager.Models
+@model TaskViewModel
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Задачи по проекту</h2>
+<h2>Добавление задач</h2>
 
+ @using (Html.BeginForm("AddTask", "Task", FormMethod.Post))
+ {
+     <label>
+         Название задачи: <input type="text" name="NameTask" class="form-control" />
+     </label>
+    <br /><br />
+
+    <label>Проект:  <select class="form-control" name="SelectProject">
+         @foreach (InfoProject project in Model.Projects)
+         {
+            <option value="@project.Id">@project.Name</option>
+         }
+
+
+     </select></label>
+
+    <label>
+        Статус задачи:  <select class="form-control" name="SelectStatus">
+            @foreach (StatusWork status in Model.StatusWorks)
+            {
+                <option value="@status.Id">@status.Name</option>
+            }
+
+
+        </select>
+    </label>
+
+     <br /><br />
+     <input type="submit" value="Добавить задачу" class="btn btn-success" />
+ }

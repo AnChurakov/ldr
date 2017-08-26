@@ -1,0 +1,19 @@
+﻿@model ClientManager.Models.StatusWork
+@{
+    ViewBag.Title = "Добавление статуса";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="col-ld-12 col-md-12">
+
+    @using (Html.BeginForm("AddStatus", "StatusWork", FormMethod.Post))
+    {
+
+        <label>
+            Название статуса: <input type="text" name="NameStatus" class="form-control" />
+        </label>
+        <input type="submit" class="btn btn-success" value="Добавить статус" />
+    }
+
+</div>

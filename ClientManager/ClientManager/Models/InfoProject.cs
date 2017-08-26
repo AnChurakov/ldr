@@ -14,5 +14,7 @@ namespace ClientManager.Models
         public string Description { get; set; }
 
         public string LinkSubdomen { get; set; }
+
+        public virtual ICollection<Tasks> Tasks { get; set; }
     }
 }

@@ -5,3 +5,29 @@
 
 <h2>Проект @ViewBag.NameProject</h2>
 
+<h4>Описание проекта</h4>
+<p>
+    @ViewBag.Desc
+</p>
+
+
+@foreach (var s in Model.Tasks)
+{
+    var status = s.StatusWorks.Select(a => a.Name).Aggregate((i, j) => i);
+
+    <a href="#">@s.Name</a>
+    if (status == "В процессе")
+    {
+        <span class="label label-info">@status</span><br />
+    }
+
+    if (status == "Завершен")
+    {
+        <span class="label label-success">@status</span><br />
+    }
+
+    if (status == "Приостановлен")
+    {
+        <span class="label label-danger">@status</span><br />
+    }
+}
