@@ -3,6 +3,18 @@
    height:100%;
 }
 
+.link-project{
+    color:#2979FF;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.block-project{
+    float:left;
+    width:100%;
+    margin-top:10px;
+}
+
 .sidebarleft {
     height: 100%;
     box-sizing: border-box;

@@ -27,9 +27,10 @@ namespace ClientManager.Controllers
 
             var Select = dbContext.InfoProjects.FirstOrDefault(a => a.Id == Id);
 
-            ViewBag.NameProject = Select.Name;
-            ViewBag.Desc = Select.Description;
-
+                ViewBag.NameProject = Select.Name;
+                ViewBag.Desc = Select.Description;
+            
+           
             return View(Select);
         }
 

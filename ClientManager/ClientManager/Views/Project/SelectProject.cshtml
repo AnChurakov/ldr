@@ -1,12 +1,20 @@
 ﻿@model ClientManager.Models.InfoProject
 @{
+    Layout = "~/Views/Shared/_LayoutWithMenu.cshtml";
     ViewBag.Title = "SelectProject";
 }
 
-<h2>Проект @ViewBag.NameProject</h2>
+<div class="col-lg-8 col-md-8">
+<h2>@ViewBag.NameProject</h2>
+
+<div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuem="100" aria-valuenow="50" aria-valuemin="0" style="width:40%;" >
+      Выполнен на 50%
+    </div>
+</div>
 
 <h4>Описание проекта</h4>
-<p>
+<p class="text-muted">
     @ViewBag.Desc
 </p>
 
@@ -31,3 +39,4 @@
         <span class="label label-danger">@status</span><br />
     }
 }
+</div>
