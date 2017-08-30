@@ -1,0 +1,33 @@
+﻿@using ClientManager.Models
+@model RoleViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutWithMenu.cshtml";
+    ViewBag.Title = "Добавление роли пользователю";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="col-ld-8 col-md-8">
+
+    @using (Html.BeginForm("AddRoleUser", "RoleUsers", FormMethod.Post))
+    {
+    <select class="form-control" name="User">
+        @foreach (var s in Model.Users)
+        {
+            <option value="@s.Id">@s.Email</option>
+        }
+    </select>
+    <br /><br />
+
+    <select class="form-control" name="Role">
+        @foreach (var r in Model.Role)
+        {
+            <option value="@r.Id">@r.Name</option>
+        }
+    </select><br />
+
+    <input type="submit" class="btn btn-success" value="Назначить роль" />
+    }
+
+
+</div>

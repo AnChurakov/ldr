@@ -13,6 +13,7 @@
     float:left;
     width:100%;
     margin-top:10px;
+    margin-bottom:20px;
 }
 
 .sidebarleft {
@@ -41,4 +42,9 @@ input,
 select,
 textarea {
     max-width: 280px;
+    
+}
+
+select{
+    display:block;
 }

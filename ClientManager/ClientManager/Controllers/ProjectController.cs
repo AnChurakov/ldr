@@ -37,24 +37,30 @@ namespace ClientManager.Controllers
         [Authorize]
         public ActionResult AddProject()
         {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
 
-            return View();
+            var ListUsers = dbContext.Users.ToList();
+
+            return View(ListUsers);
         }
 
         [Authorize]
         [HttpPost]
-        public RedirectResult Add(string NameProject, string DescProject, string LinkProject)
+        public RedirectResult Add(string NameProject, string DescProject, string LinkProject, string User)
         {
             ApplicationDbContext dbContext = new ApplicationDbContext();
 
-            if (NameProject != null && DescProject != null && LinkProject != null)
+            var UserId = dbContext.Users.FirstOrDefault(a => a.Id == User);
+
+            if (NameProject != null && DescProject != null && LinkProject != null && UserId != null)
             {
                 InfoProject project = new InfoProject {
 
                     Id = Guid.NewGuid(),
                     Name = NameProject,
                     Description = DescProject,
-                    LinkSubdomen = LinkProject
+                    LinkSubdomen = LinkProject,
+                    Users = UserId
 
                 };
 

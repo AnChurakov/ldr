@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNet.Identity.EntityFramework
+@using ClientManager.Models
+@model IEnumerable<IdentityRole>
+@{
+    Layout = "~/Views/Shared/_LayoutWithMenu.cshtml";
+    ViewBag.Title = "Роли пользователей";
+}
+
+<div class="col-lgl-8 col-md-8">
+<h2>@ViewBag.Title</h2>
+
+   @using (Html.BeginForm("AddRole", "RoleUsers", FormMethod.Post))
+   {
+       <label>
+           Название роли: <input type="text" name="NameRole" class="form-control" />
+       </label>
+       <br /><br />
+       <input type="submit" class="btn btn-success" value="Добавить роль" />
+   }
+
+   
+    @foreach (var s in Model)
+    {
+        @s.Name<br />
+    }
+
+</div>

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ClientManager.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ClientManager.Controllers
 {
@@ -11,21 +14,21 @@ namespace ClientManager.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View();
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            
+            var MyProject = dbContext.InfoProjects.Where(a => a.Users.Email == User.Identity.Name).ToList();
+
+            return View(MyProject);
         }
 
-        public ActionResult About()
+        private ApplicationUserManager UserManager
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
     }
 }

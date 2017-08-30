@@ -1,10 +1,33 @@
-﻿@{
+﻿@model IEnumerable<ClientManager.Models.InfoProject>
+@{
     Layout = "~/Views/Shared/_LayoutWithMenu.cshtml";
     ViewBag.Title = "Главная";
 }
 
+<div class="col-lg-8 col-md-8">
+<h2>Добро Пожаловать!</h2>
 
+<p class="text-muted">
 
+    Данная система предназначена для оперативного оповещения Клиентов об процессе разработки и выполнения их проектов,
+    с указанием задач, а также статусов каждой задачи и проекта.
 
+</p>
 
-<h2>Hello</h2>
+    <h4>Ваши проекты</h4>
+
+    @foreach(var project in Model)
+    {
+        if (project != null)
+        {
+       <a href="~/Project/SelectProject/@project.Id" class="link-project">@project.Name</a>
+       <span class="label label-info">В процессе разработки</span>
+       <br />
+        }
+        else
+        {
+            <span>На данный момент у Вас нет проектов.</span>
+        }
+    }
+
+   </div>

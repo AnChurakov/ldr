@@ -10,12 +10,12 @@
 
 <div class="col-lg-8 col-md-8">
     
-    @foreach (var project in Model)
+    @foreach (var project in Model.OrderByDescending(a => a.Id))
     {
         <div class="block-project"> 
            <a href="SelectProject/@project.Id" class="link-project">@project.Name</a><br />
-            <span class="label label-info">В процессе разработки</span>
-           <p class="text-muted">@project.Description</p>
+            <span class="label label-info">В процессе разработки</span> <span>Завершен на 70%</span>
+           <p>@project.Description</p>
 
             @if (project.LinkSubdomen != "")
             {

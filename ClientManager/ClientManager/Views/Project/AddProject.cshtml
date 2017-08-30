@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<ClientManager.Models.ApplicationUser>
 @{
     Layout = "~/Views/Shared/_LayoutWithMenu.cshtml";
     ViewBag.Title = "Добавление проекта";
@@ -6,28 +6,37 @@
 
 <h2>@ViewBag.Title</h2>
 
-<div class="col-lg-12 col-md-12">
+<div class="col-lg-8 col-md-8">
 
 
     @using (Html.BeginForm("Add", "Project", FormMethod.Post))
     {
-        <label>
-            Название проекта: <input type="text" class="form-control" name="NameProject" />
+      
+      <label>
+            Название проекта: <input type="text" class="form-control" placeholder="Введите название проекта" name="NameProject" />
         </label>
         <br /><br />
         
         <label>
-            Описание проекта: <textarea class="form-control" name="DescProject"></textarea>
+            Описание проекта:<textarea class="form-control" placeholder="Введите описание проекта" rows="5" cols="100" name="DescProject"></textarea>
         </label>
         <br /><br />
 
         <label>
-            Ссылка на проект: <input type="text" class="form-control" name="LinkProject" />
+            Ссылка на проект: <input type="text" class="form-control" placeholder="Укажите ссылку на ресурс" name="LinkProject" />
         </label>
         <br /><br />
+
+        <select name="User" class="form-control">
+           @foreach (var user in Model)
+           {
+               <option value="@user.Id">@user.Email</option>
+           }
+        </select><br />
         
 
         <input type="submit" class="btn btn-success" value="Добавить проект" />
+          
     }
 
 </div>

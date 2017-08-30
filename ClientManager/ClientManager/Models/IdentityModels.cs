@@ -3,6 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Linq;
+using System.Web;
+using System.Collections.Generic;
 
 namespace ClientManager.Models
 {
@@ -16,6 +19,8 @@ namespace ClientManager.Models
             // Здесь добавьте утверждения пользователя
             return userIdentity;
         }
+
+        public virtual ICollection<InfoProject> InfoProjects { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -27,7 +32,7 @@ namespace ClientManager.Models
 
         public DbSet<Tasks> Tasks { get; set; } //задачи
         public DbSet<StatusWork> StatusWorks { get; set; } //статус задач и проектов
-        public DbSet<InfoProject> InfoProjects { get; set; } // информация о проекте
+        public DbSet<InfoProject> InfoProjects { get; set; } //проекты и информация о них
 
         public static ApplicationDbContext Create()
         {

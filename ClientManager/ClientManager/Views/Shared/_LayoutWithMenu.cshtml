@@ -17,7 +17,7 @@
 
     <div id="footer">
         <div class="container">
-        <p class="text-muted">&copy; @DateTime.Now.Year – Политика конфидинциальности</p>
+        <p class="text-muted">&copy; @DateTime.Now.Year – Политика конфидинциальности. Разработано в DigitalWolf.org</p>
         </div>
     </div>
 
@@ -27,3 +27,15 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+@{ 
+    <script type="text/javascript">
+        var width = $(window).width();
+        
+        if (width < 1366)
+        {
+            $("#footer").css({"float":"left","position":"relative"});
+        }
+        
+    </script>
+}
