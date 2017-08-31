@@ -33,6 +33,7 @@ namespace ClientManager.Models
         public DbSet<Tasks> Tasks { get; set; } //задачи
         public DbSet<StatusWork> StatusWorks { get; set; } //статус задач и проектов
         public DbSet<InfoProject> InfoProjects { get; set; } //проекты и информация о них
+        public DbSet<Priority> Prioritys { get; set; } //приоритеты задач
 
         public static ApplicationDbContext Create()
         {

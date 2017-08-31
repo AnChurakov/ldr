@@ -14,15 +14,17 @@
     {
         <div class="block-project"> 
            <a href="SelectProject/@project.Id" class="link-project">@project.Name</a><br />
-            <span class="label label-info">В процессе разработки</span> <span>Завершен на 70%</span>
-           <p>@project.Description</p>
+            <span class="text-primary">Дата начала проекта: @project.Create</span><br />
+            <span class="text-success">Дата сдачи проекта: @project.Completed</span><br />
+            <span class="label label-info">В процессе разработки</span> <strong>Завершен на 70%</strong>
+           <p class="pad_p">@project.Description</p>
 
             @if (project.LinkSubdomen != "")
             {
                 <a href="#" class="text-info text">@project.LinkSubdomen</a><br />
             }
            
-            <a href="SelectProject/@project.Id" class="btn btn-info">Подробнее</a>
+            <a href="SelectProject/@project.Id" class="btn btn-info">Подробнее <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
      
     }

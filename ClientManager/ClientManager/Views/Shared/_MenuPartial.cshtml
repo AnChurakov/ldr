@@ -50,8 +50,13 @@
                 {
                 <li>@Html.ActionLink("Задачи", "Index", "Task")</li>
                 }
+
+                @if (User.IsInRole("admin"))
+                {
                 <li>@Html.ActionLink("Статус", "Index", "StatusWork")</li>
                 <li>@Html.ActionLink("Роли пользователей", "Index", "RoleUsers")</li>
+                <li>@Html.ActionLink("Приоритеты задач","Index", "Priority")</li>
+                }
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

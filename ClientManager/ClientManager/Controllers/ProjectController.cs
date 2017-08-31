@@ -60,7 +60,8 @@ namespace ClientManager.Controllers
                     Name = NameProject,
                     Description = DescProject,
                     LinkSubdomen = LinkProject,
-                    Users = UserId
+                    Users = UserId,
+                    Create = DateTime.Now
 
                 };
 

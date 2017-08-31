@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ClientManager.Models.Priority>
+@{
+    Layout = "~/Views/Shared/_LayoutWithMenu.cshtml";
+    ViewBag.Title = "Приоритеты задач";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="col-lg-8 col-md-8">
+
+
+    @using (Html.BeginForm("AddPrior", "Priority", FormMethod.Post))
+    {
+
+        <label>
+            Название: <input type="text" name="Name" placeholder="Название приоритета" class="form-control" />
+        </label><br />
+
+        <input type="submit" value="Добавить приоритет" class="btn btn-success" />
+
+
+    }
+
+    <h3>Приоритеты</h3>
+
+    @foreach (var prior in Model)
+    {
+        @prior.Name<br />
+    }
+
+</div>
+

@@ -36,6 +36,12 @@ summary {
   display: block;
 }
 
+.pad_p 
+{
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
 audio,
 canvas,
 video {
@@ -1743,19 +1749,19 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .form-control:-moz-placeholder {
-  color: #999999;
+  color: black;
 }
 
 .form-control::-moz-placeholder {
-  color: #999999;
+  color: black;
 }
 
 .form-control:-ms-input-placeholder {
-  color: #999999;
+  color: black;
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #999999;
+  color: black;
 }
 
 .form-control {
@@ -2046,7 +2052,7 @@ textarea.input-lg {
   font-weight: normal;
   line-height: 1.428571429;
   text-align: center;
-
+  border-radius:50px;
   vertical-align: middle;
   cursor: pointer;
   border: 1px solid transparent;
@@ -2212,9 +2218,13 @@ fieldset[disabled] .btn-warning.active {
 }
 
 .btn-danger {
-  color: #ffffff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
+    color: #ffffff;
+    background-color: #FB000D;
+    border-color: #FB000D;
+    font-family:Open Sans, sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    border-radius:50px;
 }
 
 .btn-danger:hover,

@@ -20,8 +20,11 @@
     {
         if (project != null)
         {
-       <a href="~/Project/SelectProject/@project.Id" class="link-project">@project.Name</a>
-       <span class="label label-info">В процессе разработки</span>
+       <a href="~/Project/SelectProject/@project.Id" class="link-project">@project.Name</a><br />
+       <span class="label label-info">В процессе разработки</span><br />
+       <p class="pad_p">
+           @project.Description
+       </p>
        <br />
         }
         else
