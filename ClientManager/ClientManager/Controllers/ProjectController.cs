@@ -27,10 +27,11 @@ namespace ClientManager.Controllers
 
             var Select = dbContext.InfoProjects.FirstOrDefault(a => a.Id == Id);
 
+
                 ViewBag.NameProject = Select.Name;
                 ViewBag.Desc = Select.Description;
-            
-           
+
+            Select.Tasks.Select(a => a.Prioritys.Name);
             return View(Select);
         }
 

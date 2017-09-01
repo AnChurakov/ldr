@@ -18,21 +18,26 @@ namespace ClientManager.Controllers
 
                 Projects = dbContext.InfoProjects.ToList(),
                 Tasks = dbContext.Tasks.ToList(),
-                StatusWorks = dbContext.StatusWorks.ToList()
+                StatusWorks = dbContext.StatusWorks.ToList(),
+                Prioritys = dbContext.Prioritys.ToList()
+                
 
             };
+
+           
 
             return View(TaskAndProject);
         }
 
         [Authorize]
         [HttpPost]
-        public RedirectResult AddTask(Guid SelectProject, string NameTask, Guid SelectStatus)
+        public RedirectResult AddTask(Guid SelectProject, string NameTask, Guid SelectStatus, Guid SelectPrior)
         {
             ApplicationDbContext dbContext = new ApplicationDbContext();
 
             var SelectProj = dbContext.InfoProjects.FirstOrDefault(a => a.Id == SelectProject);
             var SelectStat = dbContext.StatusWorks.FirstOrDefault(s => s.Id == SelectStatus);
+            var SelectPri = dbContext.Prioritys.FirstOrDefault(t => t.Id == SelectPrior);
 
             if (NameTask != null)
             {
@@ -42,7 +47,8 @@ namespace ClientManager.Controllers
                     Name = NameTask,
                     Description = null,
                     InfoProjects = new List<InfoProject>() { SelectProj},
-                    StatusWorks = new List<StatusWork>() { SelectStat} 
+                    StatusWorks = new List<StatusWork>() { SelectStat},
+                    Prioritys = SelectPri
 
                 };
 

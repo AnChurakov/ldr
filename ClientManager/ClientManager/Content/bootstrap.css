@@ -2044,6 +2044,20 @@ textarea.input-lg {
   }
 }
 
+
+.fire 
+{
+    color:red;
+}
+.btn-new{
+    background-color:#fff19d;
+    color:black;
+    border:#fff19d;
+    font-size:12px;
+    font-weight:bold;
+    font-family:Open Sans, sans-serif;
+}
+
 .btn {
   display: inline-block;
   padding: 6px 12px;

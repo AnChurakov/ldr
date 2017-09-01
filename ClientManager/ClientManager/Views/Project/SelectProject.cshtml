@@ -1,4 +1,5 @@
-﻿@model ClientManager.Models.InfoProject
+﻿@using ClientManager.Models
+@model InfoProject
 @{
     Layout = "~/Views/Shared/_LayoutWithMenu.cshtml";
     ViewBag.Title = "SelectProject";
@@ -29,11 +30,31 @@
         <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-cog"></span>В разработку</a>
     }
 
-@foreach (var s in Model.Tasks)
+    <br /><br />
+
+    @{ 
+        var alltask = Model.Tasks.Count();
+        var imptask = Model.Tasks.Where(t => t.Prioritys.Name == "Важно").Count();
+    }
+    <div class="btn-group">
+        <button type="button" class="btn btn-default" id="all">Все задачи <span class="badge">@alltask</span></button>
+        <button type="button" class="btn btn-default" id="important">Важные <span class="badge">@imptask</span></button>
+    </div>
+    <br /><br />
+
+    <div id="showall">
+        @foreach (var s in Model.Tasks)
 {
     var status = s.StatusWorks.Select(a => a.Name).Aggregate((i, j) => i);
+    var r = s.Prioritys.Tasks.Select(a => a.Prioritys.Name).Aggregate((i, j) => i);
+    
+    <a href="#" class="pad_p">@s.Name</a> 
 
-    <a href="#" class="pad_p">@s.Name</a>
+    if (r == "Важно")
+    {
+        <span class="glyphicon glyphicon-fire fire"></span>
+    }
+
     if (status == "В процессе")
     {
         <span class="label label-info">@status</span><br />
@@ -49,4 +70,43 @@
         <span class="label label-danger">@status</span><br />
     }
 }
+    </div>
+
+    <div id="showimp">
+        @foreach (var imp in Model.Tasks.Where(t => t.Prioritys.Name == "Важно"))
+        {
+            @imp.Name <span class="glyphicon glyphicon-fire fire"></span><br />
+        }
+    </div>
+
 </div>
+
+@section Scripts
+{
+    
+   <script type="text/javascript">
+
+       $(document).ready(function () {
+
+           var imp = $("#showimp").hide();
+           var all = $("#showall");
+
+           $("#important").click(function () {
+
+               imp.show();
+               all.hide();
+
+           });
+
+           $("#all").click(function () {
+
+               imp.hide();
+               all.show();
+
+           });
+
+       });
+
+    </script>
+    
+    }

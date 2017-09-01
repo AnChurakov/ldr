@@ -19,5 +19,27 @@ namespace ClientManager.Controllers
 
             return View(ListPrior);
         }
+
+        [Authorize]
+        [HttpPost]
+        public RedirectResult AddPrior(string Name)
+        {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+
+            if (Name != null || Name != "")
+            {
+                Priority prir = new Priority {
+
+                    Id = Guid.NewGuid(),
+                    Name = Name
+
+                };
+
+                dbContext.Prioritys.Add(prir);
+                dbContext.SaveChanges();
+            }
+
+            return Redirect("~/Priority/Index");
+        }
     }
 }

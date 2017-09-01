@@ -12,5 +12,6 @@ namespace ClientManager.Models
         public IEnumerable<Tasks> Tasks { get; set; }
         public IEnumerable<InfoProject> Projects { get; set; }
         public IEnumerable<StatusWork> StatusWorks { get; set; }
+        public IEnumerable<Priority> Prioritys { get; set; }
     }
 }

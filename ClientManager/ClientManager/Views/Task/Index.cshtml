@@ -10,7 +10,7 @@
  @using (Html.BeginForm("AddTask", "Task", FormMethod.Post))
  {
      <label>
-         Название задачи: <input type="text" name="NameTask" class="form-control" />
+         Название задачи: <input type="text" name="NameTask" placeholder="Название задачи" class="form-control" />
      </label>
     <br /><br />
 
@@ -22,7 +22,7 @@
 
 
      </select></label>
-
+     <br /><br />
     <label>
         Статус задачи:  <select class="form-control" name="SelectStatus">
             @foreach (StatusWork status in Model.StatusWorks)
@@ -35,5 +35,19 @@
     </label>
 
      <br /><br />
+
+    <label>
+        Приоритет задачи:  <select class="form-control" name="SelectPrior">
+            @foreach (Priority prior in Model.Prioritys)
+            {
+                <option value="@prior.Id">@prior.Name</option>
+            }
+
+
+        </select>
+    </label>
+
+    <br /><br />
+
      <input type="submit" value="Добавить задачу" class="btn btn-success" />
  }
