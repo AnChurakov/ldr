@@ -58,5 +58,18 @@ namespace ClientManager.Controllers
 
             return Redirect("~/Task/Index");
         }
+
+        [Authorize]
+        public ActionResult SelectTask(Guid Id)
+        {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+
+            var SelectTask = dbContext.Tasks.FirstOrDefault(a => a.Id == Id);
+
+            ViewBag.Name = SelectTask.Name;
+            ViewBag.Desc = SelectTask.Description;
+
+            return View(SelectTask);
+        }
     }
 }

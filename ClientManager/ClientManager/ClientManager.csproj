@@ -50,6 +50,12 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -238,6 +244,10 @@
     <Compile Include="Migrations\201708311706219_AddPrior.Designer.cs">
       <DependentUpon>201708311706219_AddPrior.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709020507189_UpProject.cs" />
+    <Compile Include="Migrations\201709020507189_UpProject.Designer.cs">
+      <DependentUpon>201709020507189_UpProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -258,6 +268,7 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -325,6 +336,7 @@
     <Content Include="Views\RoleUsers\Index.cshtml" />
     <Content Include="Views\RoleUsers\SetRoleUser.cshtml" />
     <Content Include="Views\Priority\Index.cshtml" />
+    <Content Include="Views\Task\SelectTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708231414120_InitialCreate.resx">
@@ -353,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708311706219_AddPrior.resx">
       <DependentUpon>201708311706219_AddPrior.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709020507189_UpProject.resx">
+      <DependentUpon>201709020507189_UpProject.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

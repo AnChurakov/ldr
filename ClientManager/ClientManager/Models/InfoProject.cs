@@ -22,6 +22,8 @@ namespace ClientManager.Models
 
         public DateTime Completed { get; set; }
 
+        public int Progress { get; set; }
+
         public virtual ICollection<Tasks> Tasks { get; set; }
     }
 }

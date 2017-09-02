@@ -13,8 +13,8 @@
     <span class="text-success">Дата заверешени: @Model.Completed</span><br />
 
 <div class="progress">
-    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuem="100" aria-valuenow="50" aria-valuemin="0" style="width:40%;" >
-      Выполнен на 50%
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuem="100" aria-valuenow="50" aria-valuemin="0" style="width:@ViewBag.Progress%;" >
+      Выполнен на @ViewBag.Progress %
     </div>
 </div>
 
@@ -43,40 +43,48 @@
     <br /><br />
 
     <div id="showall">
+       
         @foreach (var s in Model.Tasks)
 {
     var status = s.StatusWorks.Select(a => a.Name).Aggregate((i, j) => i);
     var r = s.Prioritys.Tasks.Select(a => a.Prioritys.Name).Aggregate((i, j) => i);
     
-    <a href="#" class="pad_p">@s.Name</a> 
+      <div class="panel panel-default">
+          <div class="panel-body">
+    <a href="~/Task/SelectTask/@s.Id" class="pad_p">@s.Name</a> 
 
-    if (r == "Важно")
+    @if (r == "Важно")
     {
         <span class="glyphicon glyphicon-fire fire"></span>
     }
 
-    if (status == "В процессе")
+    @if (status == "В процессе")
     {
         <span class="label label-info">@status</span><br />
     }
 
-    if (status == "Завершен")
+    @if (status == "Завершен")
     {
         <span class="label label-success">@status</span><br />
     }
 
-    if (status == "Приостановлен")
+    @if (status == "Приостановлен")
     {
         <span class="label label-danger">@status</span><br />
     }
+            </div>
+            </div>
 }
+           
     </div>
 
-    <div id="showimp">
+    <div id="showimp" class="panel panel-body">
+        <div class="panel-body">
         @foreach (var imp in Model.Tasks.Where(t => t.Prioritys.Name == "Важно"))
         {
             @imp.Name <span class="glyphicon glyphicon-fire fire"></span><br />
         }
+            </div>
     </div>
 
 </div>
