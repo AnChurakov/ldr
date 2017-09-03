@@ -35,9 +35,9 @@ namespace ClientManager.Controllers
 
                 ViewBag.NameProject = Select.Name;
                 ViewBag.Desc = Select.Description;
-            ViewBag.Progress = Select.Progress;
+                ViewBag.Progress = Select.Progress;
 
-            Select.Tasks.Select(a => a.Prioritys.Name);
+          
             return View(Select);
         }
 
@@ -50,6 +50,24 @@ namespace ClientManager.Controllers
 
             return View(ListUsers);
         }
+
+        [Authorize]
+        [HttpPost]
+        public RedirectToRouteResult Update(int Procent, Guid GuidProject)
+        {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+
+            var SelectProject = dbContext.InfoProjects.FirstOrDefault(a => a.Id == GuidProject);
+
+            if (GuidProject != null && Procent <= 100)
+            {
+                SelectProject.Progress = Procent;
+                dbContext.SaveChanges();
+            }
+
+            return RedirectToAction("SelectProject", "Project", new { Id = GuidProject });
+        }
+
 
         [Authorize]
         [HttpPost]

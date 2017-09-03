@@ -18,6 +18,18 @@
     </div>
 </div>
 
+    @if(User.IsInRole("admin"))
+    {
+        using (Html.BeginForm("Update", "Project", FormMethod.Post))
+        {
+        <label>
+            Завершенность проекта: <input type="text" class="form-control" placeholder="Введите процент завершенности проекта" name="Procent" />
+        </label><br />
+        <input type="hidden" value="@Model.Id" name="GuidProject"/>
+        <input type="submit" class="btn btn-new" value="Добавить"5/>
+            }
+        }
+
 <h4>Описание проекта</h4>
 <p>
     @ViewBag.Desc

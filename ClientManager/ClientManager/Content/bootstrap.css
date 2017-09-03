@@ -1748,6 +1748,11 @@ input[type="number"]::-webkit-inner-spin-button {
   height: auto;
 }
 
+.center-placeholder::-webkit-input-placeholder{
+    text-align:center;
+}
+
+
 .form-control:-moz-placeholder {
   color: black;
 }
@@ -2063,7 +2068,7 @@ textarea.input-lg {
   padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
-  font-weight: normal;
+  font-weight:bold;
   line-height: 1.428571429;
   text-align: center;
   border-radius:50px;
