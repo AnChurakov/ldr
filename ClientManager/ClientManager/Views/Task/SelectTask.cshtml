@@ -1,20 +1,54 @@
-﻿@model ClientManager.Models.Tasks
+﻿@using ClientManager.Models
+@model Tasks
 @{
     Layout = "~/Views/Shared/_LayoutWithMenu.cshtml";
     ViewBag.Title = "Задача";
+
+    var Status = Model.StatusWorks.Select(a => a.Name).Aggregate((i, j) => i);
 }
 
 <div class="col-lg-8 col-md-8">
 <h2>@ViewBag.Title @ViewBag.Name</h2>
 
+    @if(Status == "Завершен")
+    {
+        <span class="label label-success">@Status</span>
+    }
+
+    @if (Status == "В процессе")
+    {
+        <span class="label label-primary">@Status</span>
+    }
+
+    @if (Status == "Приостановлен")
+    {
+        <span class="label label-danger">@Status</span>
+    }
+
     <p>
         @ViewBag.Desc
     </p>
 
+    @if (User.IsInRole("admin"))
+    {
+    using (Html.BeginForm("UpdateStatus", "Task", FormMethod.Post))
+    {
+    <select class="form-control" name="GuidStatus">
+
+        @foreach (StatusWork stat in ViewBag.Status)
+        {
+            <option value="@stat.Id">@stat.Name</option>
+        }
+
+    </select><br />
+    <input type="hidden" value="@Model.Id" name="GuidTask" />
+    <input type="submit" class="btn btn-new" value="Обновить статус" />
+
+    }
+    }
+
+
  </div>
 
-<div class="col-lg-4 col-md-4">
-    block comment
-</div>
 
 

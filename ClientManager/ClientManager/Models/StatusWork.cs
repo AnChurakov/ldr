@@ -10,5 +10,6 @@ namespace ClientManager.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Tasks> Tasks { get; set; }
+        public ICollection<InfoProject> InfoProjects { get; set; }
     }
 }

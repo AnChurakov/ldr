@@ -22,9 +22,7 @@ namespace ClientManager.Controllers
                 Prioritys = dbContext.Prioritys.ToList()
                 
 
-            };
-
-           
+            };           
 
             return View(TaskAndProject);
         }
@@ -60,6 +58,39 @@ namespace ClientManager.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        public RedirectToRouteResult UpdateStatus(Guid GuidTask, Guid GuidStatus)
+        {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+
+            var SelectProject = dbContext.Tasks.FirstOrDefault(a => a.Id == GuidTask);
+
+            var SelectStatus = dbContext.StatusWorks.FirstOrDefault(s => s.Id == GuidStatus);
+
+            SelectProject.StatusWorks = new List<StatusWork>() { SelectStatus};
+
+            dbContext.SaveChanges();
+            
+            return RedirectToAction("SelectTask", "Task", new { Id = GuidTask});
+        }
+
+        [Authorize]
+        [HttpGet]
+        public RedirectToRouteResult Delete(Guid Id, Guid IdProject)
+        {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+
+            var SelectTask = dbContext.Tasks.FirstOrDefault(a => a.Id == Id);
+
+            var SelectProject = dbContext.InfoProjects.FirstOrDefault(t => t.Id == IdProject);
+
+            dbContext.Tasks.Remove(SelectTask);
+            dbContext.SaveChanges();
+
+            return RedirectToAction("SelectProject", "Project", new { Id = SelectProject.Id});
+        }
+
+        [Authorize]
         public ActionResult SelectTask(Guid Id)
         {
             ApplicationDbContext dbContext = new ApplicationDbContext();
@@ -68,6 +99,8 @@ namespace ClientManager.Controllers
 
             ViewBag.Name = SelectTask.Name;
             ViewBag.Desc = SelectTask.Description;
+
+            ViewBag.Status = dbContext.StatusWorks.ToList();
 
             return View(SelectTask);
         }

@@ -3,12 +3,30 @@
 @{
     Layout = "~/Views/Shared/_LayoutWithMenu.cshtml";
     ViewBag.Title = "SelectProject";
+
+    var Status = Model.StatusWorks.Name;
+
 }
 
 <div class="col-lg-8 col-md-8">
 <h2>@ViewBag.NameProject</h2>
 
-    <span class="label label-primary">В процессе</span><br />
+    @if (Status == "Завершен")
+    {
+        <span class="label label-success">@Status</span><br />
+    }
+
+    @if (Status == "Приостановлен")
+    {
+        <span class="label label-danger">@Status</span><br />
+    }
+
+    @if (Status == "В процессе")
+    {
+        <span class="label label-primary">@Status</span><br />
+
+    }
+   
     <span class="text-primary">Дата начала:@Model.Create</span><br />
     <span class="text-success">Дата заверешени: @Model.Completed</span><br />
 
@@ -20,13 +38,13 @@
 
     @if(User.IsInRole("admin"))
     {
-        using (Html.BeginForm("Update", "Project", FormMethod.Post))
+        using (Html.BeginForm("UpdateStatus", "Project", FormMethod.Post))
         {
         <label>
             Завершенность проекта: <input type="text" class="form-control" placeholder="Введите процент завершенности проекта" name="Procent" />
         </label><br />
-        <input type="hidden" value="@Model.Id" name="GuidProject"/>
-        <input type="submit" class="btn btn-new" value="Добавить"5/>
+        <input type="hidden" value="@Model.Id" name="GuidProject"/><br />
+        <input type="submit" class="btn btn-new" value="Добавить"/>
             }
         }
 
@@ -37,9 +55,18 @@
 
     @if (User.IsInRole("admin"))
     {
-        <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>Завершить проект</a> <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span>Приостановить проект</a> 
+        using (Html.BeginForm("UpdateStatus", "Project", FormMethod.Post))
+        {
+        <select class="form-control" name="UpStatus">
+            @foreach (var status in ViewBag.Status)
+            {
+                <option value="@status.Id">@status.Name</option>
+            }
+        </select>
+        <input type="hidden" value="@Model.Id" name="GuidProject" />
 
-        <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-cog"></span>В разработку</a>
+        <input type="submit" class="btn btn-new" value="Обновить статус" />
+        }
     }
 
     <br /><br />
@@ -65,6 +92,7 @@
           <div class="panel-body">
     <a href="~/Task/SelectTask/@s.Id" class="pad_p">@s.Name</a> 
 
+
     @if (r == "Важно")
     {
         <span class="glyphicon glyphicon-fire fire"></span>
@@ -84,6 +112,12 @@
     {
         <span class="label label-danger">@status</span><br />
     }
+
+ @*@if (User.IsInRole("admin"))
+ {
+     @Html.ActionLink("Удалить", "Delete", "Task", new { Id = s.Id, IdProject = Model.Id })
+ }*@
+
             </div>
             </div>
 }

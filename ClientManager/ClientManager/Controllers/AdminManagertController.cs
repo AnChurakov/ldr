@@ -13,7 +13,7 @@ namespace ClientManager.Controllers
     public class AdminManagerController : Controller
     {
         // GET: AdminManagert
-        [Authorize]
+        
         public ActionResult Index()
         {
             ApplicationDbContext dbContext = new ApplicationDbContext();

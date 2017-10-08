@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201709020507189_UpProject.Designer.cs">
       <DependentUpon>201709020507189_UpProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709030500125_ProjectAndStatus.cs" />
+    <Compile Include="Migrations\201709030500125_ProjectAndStatus.Designer.cs">
+      <DependentUpon>201709030500125_ProjectAndStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -337,6 +341,7 @@
     <Content Include="Views\RoleUsers\SetRoleUser.cshtml" />
     <Content Include="Views\Priority\Index.cshtml" />
     <Content Include="Views\Task\SelectTask.cshtml" />
+    <Content Include="Views\Shared\_test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708231414120_InitialCreate.resx">
@@ -368,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709020507189_UpProject.resx">
       <DependentUpon>201709020507189_UpProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030500125_ProjectAndStatus.resx">
+      <DependentUpon>201709030500125_ProjectAndStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

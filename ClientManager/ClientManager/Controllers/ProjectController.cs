@@ -37,8 +37,27 @@ namespace ClientManager.Controllers
                 ViewBag.Desc = Select.Description;
                 ViewBag.Progress = Select.Progress;
 
+            ViewBag.Status = dbContext.StatusWorks.ToList();          
+            
           
             return View(Select);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public RedirectToRouteResult UpdateStatus(Guid UpStatus, Guid GuidProject)
+        {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+
+            var SelectStatus = dbContext.StatusWorks.FirstOrDefault(a => a.Id == UpStatus);
+
+            var SelectProject = dbContext.InfoProjects.FirstOrDefault(s => s.Id == GuidProject);
+
+            SelectProject.StatusWorks = SelectStatus;
+
+            dbContext.SaveChanges();
+
+            return RedirectToAction("SelectProject", "Project", new { Id = GuidProject });
         }
 
         [Authorize]
